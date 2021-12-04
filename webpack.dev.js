@@ -2,7 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const sass = require('sass');
 
 module.exports = {
     entry: './src/client/index.js',
@@ -14,7 +13,10 @@ module.exports = {
     devtool: 'source-map',
     stats: 'verbose',
     devServer: {
-        port: 8080 // change this to run dev server elsewhere; note that Express server runs on 8081
+        port: 8080, // change this to run dev server elsewhere; note that Express server runs on 8081
+        // proxy: { 
+        //     '/get-key': 'http://localhost:8081', // not working
+        //   }, 
     },
     module: {
         rules: [

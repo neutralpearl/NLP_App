@@ -22,10 +22,10 @@
             </section>
 
             <section id="enter-text">
-                <form id="form" onsubmit="return handleSubmit(event)"></form>
+                <form id="form"> <!--onsubmit="return handleSubmit(event)"-->
                     <label for="input-text">Enter the text you'd like to analyze.</label>
                     <textarea id="input-text" type="text" name="input" value="" minlength="50" required></textarea>
-                    <input id="form-submit" type="submit"  value="Analyze Sentiments" onclick="Client.handleSubmit(event)">
+                    <input id="form-submit" type="submit"  value="Analyze Sentiments"> <!--onclick="handleSubmit(event)"-->
                 </form>
             </section>
 
