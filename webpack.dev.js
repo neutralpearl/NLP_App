@@ -2,18 +2,20 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-// const Dotenv = require('dotenv-webpack')
 const sass = require('sass');
 
 module.exports = {
     entry: './src/client/index.js',
-    mode: 'development',
-    devtool: 'source-map',
-    stats: 'verbose',
     output: {
         libraryTarget: "var",
         library: "Client",
-      },
+    },
+    mode: 'development',
+    devtool: 'source-map',
+    stats: 'verbose',
+    devServer: {
+        port: 8080 // change this to run dev server elsewhere; note that Express server runs on 8081
+    },
     module: {
         rules: [
             {
@@ -41,15 +43,10 @@ module.exports = {
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
         }),
-        // fix "process is not defined" error:
-        // (do "npm install process" before running the build)
-        // new webpack.ProvidePlugin({
-        //     process: 'process/browser',
-        // }),
+        // ecommended fix for webpack 5 not polyfilling "process" in browser environment
         new webpack.DefinePlugin({
             // 'process.env.NODE_ENV': JSON.stringify('development')
             'process.env': JSON.stringify('process.env')
          })
-        // new Dotenv()
     ]
 }

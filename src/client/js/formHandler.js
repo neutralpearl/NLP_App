@@ -6,20 +6,14 @@ async function handleSubmit(event) {
     event.preventDefault();
     console.log("::: Form submitted; now handling... :::");
 
-    // :::: NOT WORKING :::::
-    // GET API Key value stored on server
+    // async GET call to retrieve API Key value stored on server
     const retrieveKey = async () => {
-        const response = await fetch('/get-key');
+        const response = await fetch('https://localhost:8081/get-key');
         console.log(response);
         return response;
     }
-
-    // save res
     const API_KEY = JSON.stringify(retrieveKey().key);
-    // console.log(API_KEY);
 
-    // debugging — provide API Key directly instead of running GET from server
-    // const API_KEY = '<API-KEY>';
 
     // check what text was put into the form field
     let formText = document.getElementById('input-text').value;
@@ -28,11 +22,11 @@ async function handleSubmit(event) {
     const isValidated = await validateLang(formText,API_KEY);
 
     if (isValidated) {
-        // retrieve Sentimental Analysis data from API
-        const request = await fetchSentiments(formText,API_KEY);
+        
         try {
-            // Transform into JSON
-            const response = await request.json()
+            // retrieve Sentimental Analysis data from API
+            const request = await fetchSentiments(formText,API_KEY);
+            const response = await request.json() // Transform into JSON
             .then(response => {
                 // retrieve data from API & populate DOM content
                 configSentiments(response);
@@ -55,7 +49,9 @@ async function handleSubmit(event) {
         } catch(error) {
             console.log(error);
         }
-    } 
+    } else {
+        throw new Error('No English text to evaluate');
+    }
 }
 
 export { handleSubmit }
