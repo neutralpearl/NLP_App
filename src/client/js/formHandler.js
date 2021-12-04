@@ -8,7 +8,7 @@ async function handleSubmit(event) {
 
     // async GET call to retrieve API Key value stored on server
     const retrieveKey = async () => {
-        const response = await fetch('https://localhost:8081/get-key');
+        const response = await fetch('http://localhost:8081/get-key');
         console.log(response);
         return response;
     }

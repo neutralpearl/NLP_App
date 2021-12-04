@@ -2,14 +2,15 @@ const path = require('path');
 // const process = require('process'); // unless localhost:8080 is viewed in Chrome incognito mode, browser displays "ReferenceError: process is not defined" when running functions that use variables defined as properties of process.env.
 const express = require('express');
 const cors = require('cors');
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
 const bodyParser = require('body-parser');
 
 const dotenv = require('dotenv');
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
+console.log(path.resolve(__dirname, "../.env"));
 
 const API_KEY = process.env.API_KEY;
-// console.log(API_KEY); // debugging
+console.log(API_KEY); 
 
 const app = express();
 

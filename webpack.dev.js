@@ -14,9 +14,9 @@ module.exports = {
     stats: 'verbose',
     devServer: {
         port: 8080, // change this to run dev server elsewhere; note that Express server runs on 8081
-        // proxy: { 
-        //     '/get-key': 'http://localhost:8081', // not working
-        //   }, 
+        proxy: { 
+            '/get-key': 'http://localhost:8081', // not working
+          }
     },
     module: {
         rules: [
