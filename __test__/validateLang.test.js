@@ -1,13 +1,29 @@
 import { validateLang } from "../src/client/js/langValidator";
 
+// require('jest-fetch-mock').enableMocks();
+// import { fetch } from "./jest-setup";
+
 // The describe() function takes two arguments - a string description, and a test suite as a callback function.  
 // A test suite may contain one or more related tests    
-describe("Testing the submit functionality", () => {
+describe("makes sure text input is in English; otherwise displays error message in UI", () => {
     // The test() function has two arguments - a string description, and an actual test as a callback function.  
-    test("Testing the checkForName() function", () => {
-           // Define the input for the function, if any, in the form of variables/array
-           // Define the expected output, if any, in the form of variables/array
-           // The expect() function, in combination with a Jest matcher, is used to check if the function produces the expected output
-           // The general syntax is `expect(myFunction(arg1, arg2, ...)).toEqual(expectedValue);`, where `toEqual()` is a matcher
-           expect(validateLang).toBeDefined();
-})});
+    test("if English, returns API response", () => {
+        const inputs = [
+            'Colavita brings a classic Italian favorite straight from the fertile soil of Italy, with their flavorful Sun-Dried Tomato Pesto Sauce.',
+        ]
+        const outputs = [
+            {},
+            {},
+            {}
+        ];
+        const key = process.env.API_KEY;
+           
+        expect(validateLang(inputs[0],key)).toEqual(outputs[0]);
+    }),
+    test("if not English, throws error and shows error message in UI containing correct language name", () => {
+        const input = 'Colavita brings a classic Italian favorite straight from the fertile soil of Italy, with their flavorful Sun-Dried Tomato Pesto Sauce.'
+        const output = '';
+           
+        expect(validateLang(inputs[0],key)).toEqual(output);
+    })
+});

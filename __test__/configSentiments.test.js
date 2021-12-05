@@ -6,7 +6,7 @@
 import { configSentiments } from "../src/client/js/sentimentConfigurator";
 
 describe("updates UI based on MeaningCloud Sentimental Analysis API response", () => {
-    test("parses json data by key and modifies corresponding DOM elements", () => {
+    test("returns correct text & unicode outputs", () => {
         document.body.innerHTML = `
             <section id="sentiments">
                 <div id="error-message"></div>
@@ -32,16 +32,29 @@ describe("updates UI based on MeaningCloud Sentimental Analysis API response", (
             </section>
         `;
 
-        const input = {
+        const input1 = {
             agreement: 'AGREEMENT',
             subjectivity: 'OBJECTIVE',
             confidence: '70',
             irony: 'IRONIC',
         };
-        const output = {
+        const output1 = {
             text: [`agreement`, `objective`, `70%`,`ironic`],
             emojis: ['&#128077;','&#129488;','&#128526;','&#128521;']
         };
-        expect(configSentiments(input)).toEqual(output);
+
+        const input2 = {
+            agreement: 'DISAGREEMENT',
+            subjectivity: 'SUBJECTIVE',
+            confidence: '30',
+            irony: 'NONIRONIC',
+        };
+        const output2 = {
+            text: [`disagreement`, `subjective`, `30%`,`nonironic`],
+            emojis: ['&#128078;','&#129300;','&#129320;','&#128528;']
+        };
+
+        expect(configSentiments(input1)).toEqual(output1);
+        expect(configSentiments(input2)).toEqual(output2);
     })
 });
