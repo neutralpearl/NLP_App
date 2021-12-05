@@ -4,13 +4,15 @@ enableFetchMocks();
 import { fetchSentiments } from "../src/client/js/sentimentFetcher";
   
 describe("gets data from MeaningCloud sentiment analysis API", () => {
-    // The test() function has two arguments - a string description, and an actual test as a callback function.  
-    test("...", () => {
+    test("response received from API", async () => {
 
-        const input = 'Colavita brings a classic Italian favorite straight from the fertile soil of Italy, with their flavorful Sun-Dried Tomato Pesto Sauce.'
-        const output = '...'; // Promise ?
+        const input = 'Colavita brings a classic Italian favorite straight from the fertile soil of Italy.'
+        const key = 'process.env.API_KEY';
+        
+        fetch.mockResponse({ok: true, status: 200});
 
-        const key = 'process.env.API_KEY'; // will this work?
-
-        expect(fetchSentiments(input,key)).toEqual(output);
+        return fetchSentiments(input,key).then(data => {
+            expect(data.ok).toBeTruthy();
+            expect(data.status).toEqual(200);
+        });
 })});

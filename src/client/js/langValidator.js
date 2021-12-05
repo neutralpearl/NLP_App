@@ -1,6 +1,7 @@
 async function validateLang(inputText,key) {
     console.log(`::: Checking language of: "${inputText}" :::`);  
 
+    const $ = id => document.getElementById(id); // throws ReferenceError in Jest test if not defined here
     const errorMessage = $('error-message');
 
     // configure fetch from MeaningCloud Language Identification API
@@ -22,6 +23,7 @@ async function validateLang(inputText,key) {
 
         if (lang === 'English') {
             errorMessage.style.display = 'none'; 
+            console.log(response);
             return response;
         } else {
             errorMessage.innerHTML = `The text you entered is in ${lang}.<br/><br/> MindRdr cannot analyze non-English text at this time.`;

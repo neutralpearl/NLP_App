@@ -16,6 +16,7 @@ async function fetchSentiments(inputText,key) {
     
     try {
         const request = await fetch(`${endpoint}`, requestOptions);
+        // console.log(request);
         return request;
     } catch(error) {
         throw new Error('Error: Could not retrieve response from MeaningCloud Sentiment Analysis API');
