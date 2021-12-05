@@ -7,10 +7,10 @@ const bodyParser = require('body-parser');
 
 const dotenv = require('dotenv');
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
-console.log(path.resolve(__dirname, "../.env"));
+// console.log(path.resolve(__dirname, "../.env"));
 
 const API_KEY = process.env.API_KEY;
-console.log(API_KEY); 
+// console.log(API_KEY); 
 
 const app = express();
 
@@ -38,5 +38,6 @@ app.listen(8081, () => {
 // const getKey = 
 // GET route — NOT WORKING!
 app.get('/get-key', (req, res) => {
-    res.status(200).send(JSON.stringify({key: API_KEY}));
+    // res.status(200).send(JSON.stringify({key: API_KEY}));
+    res.status(200).send({key: API_KEY});
 });
