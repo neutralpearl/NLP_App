@@ -1,7 +1,7 @@
-import { fetchSentiments } from "../src/client/js/sentimentFetcher";
+import { enableFetchMocks } from 'jest-fetch-mock';
+enableFetchMocks();
 
-// require('jest-fetch-mock').enableMocks();
-// import { fetch } from "./jest-setup";
+import { fetchSentiments } from "../src/client/js/sentimentFetcher";
   
 describe("gets data from MeaningCloud sentiment analysis API", () => {
     // The test() function has two arguments - a string description, and an actual test as a callback function.  

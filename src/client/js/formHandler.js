@@ -12,12 +12,12 @@ async function handleSubmit(event) {
 
     try {
         await retrieveKey() 
-        .then(async json => {
+        .then(async data => {
             // use MeaningCloud Language Identification API to make sure text is in English
-            const isValidated = await validateLang(formText,`${json.key}`);
+            const isValidated = await validateLang(formText,`${data.key}`);
             if (isValidated) {
                 // retrieve Sentimental Analysis data from MeaningCloud API
-                const request = await fetchSentiments(formText,`${json.key}`);
+                const request = await fetchSentiments(formText,`${data.key}`);
                 return request; 
             } else {
                 throw new Error('No English text to evaluate');
@@ -43,7 +43,8 @@ async function handleSubmit(event) {
             // show div containing sentiments
             $('results').style.display = 'grid';
             $('results').style.visibility = 'visible';
-        })     
+        }) 
+        return 'submission handled';    
     } catch(error) {
         console.log(error);
     }

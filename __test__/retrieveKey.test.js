@@ -1,13 +1,16 @@
-import { retrieveKey } from "../src/client/js/keyFetcher";
+// https://jestjs.io/docs/asynchronous
 
-// require('jest-fetch-mock').enableMocks();
-// import { fetch } from "./jest-setup";
+import { enableFetchMocks } from 'jest-fetch-mock';
+enableFetchMocks();
+
+import { retrieveKey } from "../src/client/js/keyFetcher";
  
 describe("retrieves data object containing API key from local server", () => { 
-    test("get correct key", () => {
+    test("get correct key", async () => {
            
         // output is promise object containing key, not the key itself
-        const output = '';
+        const input = await retrieveKey();
+        const output = ''; // need to mimic either data or returned promise
 
-        expect(retrieveKey()).toEqual(output);
+        return expect(input).resolves.toEqual(output);
 })});

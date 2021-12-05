@@ -1,13 +1,14 @@
 async function validateLang(inputText,key) {
     console.log(`::: Checking language of: "${inputText}" :::`);  
 
+    const errorMessage = $('error-message');
+
+    // configure fetch from MeaningCloud Language Identification API
     let endpoint = 'https://api.meaningcloud.com/lang-4.0/identification';
     const MeaningCloud_API_Key = key;
-
     const formdata = new FormData();
     formdata.append("key", `${MeaningCloud_API_Key}`);
     formdata.append("txt", `${inputText}`);
-
     const requestOptions = {
         method: 'POST',
         body: formdata,
@@ -18,7 +19,6 @@ async function validateLang(inputText,key) {
         const request = await fetch(`${endpoint}`, requestOptions);
         const response = await request.json();
         const lang = response.language_list[0].name;
-        const errorMessage = $('error-message');
 
         if (lang === 'English') {
             errorMessage.style.display = 'none'; 
