@@ -1,8 +1,8 @@
 async function validateLang(inputText,key) {
-    console.log(`::: Running validateText ::: "${inputText}" `);
+    console.log(`::: Checking language of: "${inputText}" :::`);  
 
     let endpoint = 'https://api.meaningcloud.com/lang-4.0/identification';
-     const MeaningCloud_API_Key = key;
+    const MeaningCloud_API_Key = key;
 
     const formdata = new FormData();
     formdata.append("key", `${MeaningCloud_API_Key}`);
@@ -14,24 +14,23 @@ async function validateLang(inputText,key) {
         redirect: 'follow'
       };
 
-    const request = await fetch(`${endpoint}`, requestOptions);
     try {
+        const request = await fetch(`${endpoint}`, requestOptions);
         const response = await request.json();
         const lang = response.language_list[0].name;
-        const errorMessage = document.getElementById('error-message');
+        const errorMessage = $('error-message');
 
-        if(lang === 'English'){
+        if (lang === 'English') {
             errorMessage.style.display = 'none'; 
-            console.log(response);
             return response;
         } else {
             errorMessage.innerHTML = `The text you entered is in ${lang}.<br/><br/> MindRdr cannot analyze non-English text at this time.`;
             errorMessage.style.display = 'block';          
 
             //show error message in lieu of response
-            document.getElementById('sentiments').style.visibility = 'visible';
-            document.getElementById('results-title').style.display = 'none';
-            document.getElementById('results').style.display = 'none';
+            $('sentiments').style.visibility = 'visible';
+            $('results-title').style.display = 'none';
+            $('results').style.display = 'none';
 
             throw new Error('Sorry! MindRdr cannot analyze non-English text at this time.');
         }

@@ -1,9 +1,8 @@
 async function fetchSentiments(inputText,key) {
-    console.log(`::: Running fetchSentiments :::`);
+    console.log(`::: Retrieving sentiments... :::`);
 
     const endpoint = 'https://api.meaningcloud.com/sentiment-2.1';
     const MeaningCloud_API_Key = key;
-    // console.log(MeaningCloud_API_Key); // debugging
 
     const formdata = new FormData();
     formdata.append("key", `${MeaningCloud_API_Key}`);
