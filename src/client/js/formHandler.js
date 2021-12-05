@@ -8,7 +8,7 @@ async function handleSubmit(event) {
     console.log("::: Form submitted... :::");
 
     // check what text was put into the form field
-    let formText = document.getElementById('input-text').value;
+    let formText = $('input-text').value;
 
     try {
         await retrieveKey() 

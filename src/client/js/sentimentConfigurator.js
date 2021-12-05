@@ -1,4 +1,6 @@
 const configSentiments = data => {
+    const $ = id => document.getElementById(id); // throws ReferenceError in Jest test if not defined here
+
     console.log(`::: Displaying results :::`);
 
     $('results-title').innerHTML = `Sentiments Detected:`;
@@ -19,6 +21,11 @@ const configSentiments = data => {
     $('irony').innerHTML = `<strong>Irony:</strong> ${data.irony.toLowerCase()}`;
     const ironyEmoji = (data.irony.toLowerCase() === 'ironic' ? '&#128521;' : '&#128528;');
     $('irony-emoji').innerHTML = ironyEmoji;
+
+    return {
+        text: [`${data.agreement.toLowerCase()}`, `${data.subjectivity.toLowerCase()}`, `${data.confidence}%`,`${data.irony.toLowerCase()}`],
+        emojis: [agreementEmoji,subjectivityEmoji,confidenceEmoji,ironyEmoji]
+    }; // no impact, just for testing
 }
 
 export { configSentiments }
