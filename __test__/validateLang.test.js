@@ -59,7 +59,7 @@ describe("makes sure text input is in English; otherwise displays error message 
         
         for (const input of inputs) {
             const response = await validateLang(input,key);
-            expect(response).not.toEqual(false);
+            expect(response).toBeTruthy();
         }
     }),
     test("if not English, returns false", async () => {

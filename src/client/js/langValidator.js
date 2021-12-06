@@ -33,12 +33,10 @@ async function validateLang(inputText,key) {
             $('results-title').style.display = 'none';
             $('results').style.display = 'none';
 
-            throw new Error('Sorry! MindRdr cannot analyze non-English text at this time.');
+            return false;
         }
-        
     } catch(error) {
         console.log(error);
-        return false;
     }
 }
 
