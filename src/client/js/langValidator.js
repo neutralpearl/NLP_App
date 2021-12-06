@@ -23,7 +23,6 @@ async function validateLang(inputText,key) {
 
         if (lang === 'English') {
             errorMessage.style.display = 'none'; 
-            console.log(response);
             return response;
         } else {
             errorMessage.innerHTML = `The text you entered is in ${lang}.<br/><br/> MindRdr cannot analyze non-English text at this time.`;
