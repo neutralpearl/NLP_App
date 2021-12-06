@@ -4,7 +4,7 @@ import { fetchSentiments } from './sentimentFetcher';
 import { configSentiments} from "./sentimentConfigurator";
 
 async function handleSubmit(event) {
-    event.preventDefault(); // 
+    event.preventDefault(); 
     console.log("::: Form submitted... :::");
 
     // check what text was put into the form field
@@ -47,6 +47,7 @@ async function handleSubmit(event) {
         return 'submission handled';    
     } catch(error) {
         console.log(error);
+        return 'submission failed';
     }
 }
 
