@@ -1,0 +1,17 @@
+UI
+
+Jest
+- fix FetchError in tests
+- figure out how to mock nested functions
+// https://jestjs.io/docs/mock-functions
+// https://medium.com/@rickhanlonii/understanding-jest-mocks-f0046c68e53c
+// https://stackabuse.com/using-mocks-for-testing-in-javascript-with-jes/
+
+
+Service Workers
+- enable
+
+Misc
+- Test Production Build
+
+

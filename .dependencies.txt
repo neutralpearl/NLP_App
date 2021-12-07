@@ -1,6 +1,5 @@
   commented versions are current; uncommented are those used in sample code
   
-  
   "dependencies": {
     "animate.css": "^4.1.1",
     "cors": "^2.8.5",
