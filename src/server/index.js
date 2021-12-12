@@ -3,13 +3,12 @@ const path = require('path');
 const express = require('express');
 const cors = require('cors');
 // const fetch = require('node-fetch');
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 
 const dotenv = require('dotenv');
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
 const API_KEY = process.env.API_KEY;
-// console.log(API_KEY); // debugging
 
 const app = express();
 
@@ -22,8 +21,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    // res.sendFile('dist/index.html') <-- switch to this for production
-    res.sendFile(path.resolve('src/client/views/index.html'))
+    res.sendFile('dist/index.html') // <-- switch to this for production
+    // res.sendFile(path.resolve('src/client/views/index.html')) // <-- use this during dev
 })
 
 // designates what port the app will listen to for incoming requests
