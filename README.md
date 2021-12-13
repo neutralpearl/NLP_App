@@ -6,11 +6,11 @@ MindRdr is a simple single-page application that leverages [MeaningCloud APIs](h
  - Use of **Express** as a back-end framework 
  - Use of **Fetch API** for web requests
  - Use of **Webpack** module bundler as a build tool, in concert with the following plugins:
- - - **Babel**, to translate ES6 JavaScript into vanilla JS compatible with any browser
- - - **Loaders**, to translate **Sass** stylesheets into vanilla CSS
- - - **Minimizers**, to reduce file sizes of built assets for browser optimization
- - - **Webpack Dev Server**, to view live updates during development
- - - **dotenv**, to keep private information (like API keys) hidden from client view in production
+   - **Babel**, to translate ES6 JavaScript into vanilla JS compatible with any browser
+   - **Loaders**, to translate **Sass** stylesheets into vanilla CSS
+   - **Minimizers**, to reduce file sizes of built assets for browser optimization
+   - **Webpack Dev Server**, to view live updates during development
+   - **dotenv**, to keep private information (like API keys) hidden from client view in production
 
 ## Contents
 
